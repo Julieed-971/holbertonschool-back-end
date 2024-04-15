@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 """Return information about employee TO DO list progress"""
 
-from itertools import count
-from sys import argv
-import json
+
 import requests
+from sys import argv
+
 
 # Get user name related to id
 user_api_url = "https://jsonplaceholder.typicode.com/users/{}".format(argv[1])
