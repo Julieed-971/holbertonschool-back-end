@@ -2,7 +2,6 @@
 """Return information about employee TO DO list progress"""
 
 import csv
-import json
 import requests
 from sys import argv
 
@@ -19,12 +18,12 @@ if __name__ == "__main__":
         argv[1])
     todos = requests.get(tasks_url)
     todos_tasks = todos.json()
-    total_tasks = len(todos_tasks)
+    # total_tasks = len(todos_tasks)
 
     # Get and append task title for done task in todos_tasks
-    titles = [item.get('title') for item in todos_tasks if
-              item.get("completed") is True]
-    done_tasks = len(titles)
+    # titles = [item.get('title') for item in todos_tasks if
+    #           item.get("completed") is True]
+    # done_tasks = len(titles)
 
     # Export data to a csv file
     csv_file = "{}.csv".format(argv[1])
