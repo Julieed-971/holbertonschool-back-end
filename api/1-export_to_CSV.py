@@ -11,7 +11,7 @@ if __name__ == "__main__":
     user_api_url = "https://jsonplaceholder.typicode.com/users/{}".format(
         argv[1])
     user = requests.get(user_api_url)
-    employee_name = user.json().get('name')
+    employee_name = user.json().get('username')
     id = user.json().get('id')
 
     # Get tasks from user
