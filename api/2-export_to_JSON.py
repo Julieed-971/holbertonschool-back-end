@@ -29,7 +29,6 @@ if __name__ == "__main__":
             "username": employee_name
         })
     todos_dict = {id: todos_list}
-    
 
     # Export data to a csv file
     json_file = "{}.json".format(argv[1])
