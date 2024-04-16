@@ -28,8 +28,10 @@ if __name__ == "__main__":
             "completed": item["completed"],
             "username": employee_name
         })
+    todos_dict = {id: todos_list}
+    
 
     # Export data to a csv file
     json_file = "{}.json".format(argv[1])
     with open(json_file, "w") as f:
-        json.dump([argv[1], todos_list], f)
+        json.dump(todos_dict, f)
