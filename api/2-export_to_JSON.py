@@ -10,8 +10,8 @@ if __name__ == "__main__":
     # Get user name related to id
     user_api_url = "https://jsonplaceholder.typicode.com/users/{}".format(
         argv[1])
-    user = requests.get(user_api_url)
-    employee_name = user.json().get('username')
+    users = requests.get(user_api_url)
+    users_list = users.json()
 
     # Get tasks from user
     tasks_url = "https://jsonplaceholder.typicode.com/users/{}/todos/".format(
@@ -20,16 +20,18 @@ if __name__ == "__main__":
     todos_tasks = todos.json()
 
     # Create the list of dict with values to export to json
-    todos_list = []
-    for item in todos_tasks:
-        todos_list.append({
-            "task": item.get("title"),
-            "completed": item.get("completed"),
-            "username": employee_name
-        })
-    todos_dict = {argv[1]: todos_list}
+    user_all_tasks_dict = {
+        argv[1]: [
+            {
+                "task": task["title"],
+                "completed": task["completed"],
+                "username": users_list.get("username")
+            }
+            for task in todos_tasks
+        ]
+    }
 
-    # Export data to a csv file
+    # Export data to a json file
     json_file = "{}.json".format(argv[1])
     with open(json_file, "w") as f:
-        json.dump(todos_dict, f)
+        json.dump(user_all_tasks_dict, f)
