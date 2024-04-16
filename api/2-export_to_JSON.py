@@ -12,7 +12,6 @@ if __name__ == "__main__":
         argv[1])
     user = requests.get(user_api_url)
     employee_name = user.json().get('username')
-    id = user.json().get('id')
 
     # Get tasks from user
     tasks_url = "https://jsonplaceholder.typicode.com/users/{}/todos/".format(
@@ -28,7 +27,7 @@ if __name__ == "__main__":
             "completed": item["completed"],
             "username": employee_name
         })
-    todos_dict = {id: todos_list}
+    todos_dict = {argv[1]: todos_list}
 
     # Export data to a csv file
     json_file = "{}.json".format(argv[1])
