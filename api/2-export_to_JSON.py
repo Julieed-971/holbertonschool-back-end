@@ -23,8 +23,8 @@ if __name__ == "__main__":
     todos_list = []
     for item in todos_tasks:
         todos_list.append({
-            "task": item["title"],
-            "completed": item["completed"],
+            "task": item.get("title"),
+            "completed": item.get("completed"),
             "username": employee_name
         })
     todos_dict = {argv[1]: todos_list}
